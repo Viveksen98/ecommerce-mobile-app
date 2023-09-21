@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import { Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { AntDesign } from '@expo/vector-icons';
 
@@ -22,7 +21,7 @@ const Header = () => {
       }}>
         {count}
       </Text>
-      <Pressable onPress={() => navigation.navigate("Add_to_cart")}>
+      <Pressable onPress={() => navigation.navigate("Cart")}>
 
       <AntDesign name="shoppingcart" size={30} color="black" style={{marginTop:60,marginLeft:10}} />
 

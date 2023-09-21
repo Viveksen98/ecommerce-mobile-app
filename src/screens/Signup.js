@@ -5,7 +5,6 @@ import { TextInput } from 'react-native'
 import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Signup = () => {
     const navigation = useNavigation();
@@ -62,7 +61,7 @@ const Validation = () => {
 
     return (
         <View>
-            <Image source={require('../src/Images/8997261.jpg')} style={styles.image} />
+            <Image source={require('../Images/8997261.jpg')} style={styles.image} />
 
             <View style={styles.pagestyle}>
 
@@ -73,7 +72,6 @@ const Validation = () => {
             </View>
 
             <View style={styles.positions}>
-                <MaterialCommunityIcons name="email-edit-outline" size={24} color="black" />
                 <TextInput style={styles.inputstyle} placeholder='Enter username'
                     value={name}
                     onChangeText={(text) => setName(text)} />

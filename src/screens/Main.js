@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import NavigationApp from './NavigationApp'
+import Routes from '../navigation/Routes'
 const Main = () => {
   return (
-    <NavigationApp />
+    <Routes />
   )
 }
 

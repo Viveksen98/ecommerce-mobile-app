@@ -6,13 +6,12 @@ import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
-const LOgin = () => {
+const LOgin = ({setIsLoggedin}) => {
   const navigation = useNavigation();
 
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSignedIn,setIsSignedIn] = useState(false)
 
 
   const Condition = async () => {
@@ -21,20 +20,18 @@ const LOgin = () => {
 
     if (email === sEmail && password ===spassword) {
       navigation.navigate("ProductList")
-      console.log(password);
-
+      
       setPassword('')
       setEmail('')
-      setIsSignedIn(true)
 
     } else {
-      Alert.alert('UserName and Password is incorrect');
+      Alert.alert('Username and Password are incorrect');
     }
   }
 
   return (
     <View>
-      <Image source={require('../src/Images/8997261.jpg')} style={styles.image} />
+      <Image source={require('../Images/8997261.jpg')} style={styles.image} />
 
 
       <View style={styles.pagestyle}>

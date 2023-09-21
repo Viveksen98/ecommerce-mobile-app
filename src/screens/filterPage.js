@@ -2,11 +2,11 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { useRoute } from '@react-navigation/native'
 import { useEffect } from 'react'
-import ProductCard from './component/ProductCard'
 import { TouchableOpacity } from 'react-native'
 import { Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { Image } from 'react-native'
+import Header from './Header'
 
 const FilterPage = () => {
   const navigation = useNavigation();
@@ -68,15 +68,12 @@ const FilterPage = () => {
   }
 
   return (
-    <FlatList
+    <View><Header /><FlatList
       data={product}
       renderItem={renderProducts}
       keyExtractor={item => item}
-      numColumns={2}
-
-    />
-
-
+      numColumns={2} />
+      </View>
   )
 }
 

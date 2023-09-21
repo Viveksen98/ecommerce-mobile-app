@@ -1,60 +1,12 @@
 import { FlatList, StyleSheet, Text, View, Image, SafeAreaView, Pressable, TouchableOpacity, ScrollView, TextInput } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Header from './src/Header';
+import Header from './Header';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { Add_to_Cart } from './src/redux/action';
-const ProductList = () => {
+import { useSelector } from 'react-redux';
+
+const Cart = () => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
-
-  const Additem = (item) => {
-    dispatch(Add_to_Cart(item))
-  }
-  const WishList = (item) => {
-    dispatch(WishList(item))
-  }
-
-  const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
-
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json()).
-      then(json => setProducts(json))
-  }, [])
-
-
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products/categories')
-      .then(res => res.json())
-      .then(json =>
-        setCategory(json)
-      );
-
-  }, [])
-  const Searchbar = (text) => {
-    useEffect(() => {
-      fetch(`https://fakestoreapi.com/products?q=${text}`)
-        .then(res => res.json())
-        .then(json =>
-          setCategory(json)
-        );
-
-    }, [])
-  }
-
-  const rendercategories = ({ item }) => {
-    return (
-      <View>
-        <Pressable onPress={() => navigation.navigate("FilterPage", { Details: item })}>
-          <Text style={styles.filter}> {item}</Text>
-        </Pressable>
-      </View>
-    )
-  }
-
-
+ // const item = useSelector((state)=>state.cart.cartItem)
 
   const renderItem = ({ item }) => {
     return (
@@ -96,21 +48,8 @@ const ProductList = () => {
   }
   return (
     <SafeAreaView style={styles.Pagestyle}>
-      <Header />
-      <TextInput placeholder='search bar' style={{
-        borderWidth: 2, borderColor: 'gray', width: '90%', margin: 2
-      }} onChangeText={(text) => Searchbar(text)}
-       />
       <FlatList
-        horizontal={true}
-        data={category}
-        renderItem={rendercategories}
-        keyExtractor={item => item}
-      />
-
-
-      <FlatList
-        data={products}
+        data={item}
         renderItem={renderItem}
         keyExtractor={Item => Item.id}
         numColumns={2}
@@ -119,7 +58,7 @@ const ProductList = () => {
   )
 }
 
-export default ProductList
+export default Cart
 
 const styles = StyleSheet.create({
   Pagestyle: {

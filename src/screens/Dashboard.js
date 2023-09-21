@@ -8,7 +8,7 @@ const Dashboard = () => {
   const navigation=useNavigation();
   return (
     <View style={{ flex: 1 }}>
-      <Image source={require('../src/Images/8997261.jpg')} style={{
+      <Image source={require('../Images/8997261.jpg')} style={{
         height: 800, width: 370, resizeMode: 'stretch'
         , marginRight: 100, alignItems: 'center'
       }}
